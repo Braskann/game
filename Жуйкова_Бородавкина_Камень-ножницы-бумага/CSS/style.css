@@ -1,0 +1,224 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-size: 9px;
+	font-family: 'Raleway', serif;
+}
+body {
+	background: -webkit-linear-gradient(90deg,#fee1e9,#edd5e1,#aed0db); /* Chrome 10-25, Safari 5.1-6 */ background: linear-gradient(90deg,#fee1e9,#edd5e1,#aed0db); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	color:#fff;
+	font-size: 1rem;
+}
+
+.block {
+	pointer-events: none;
+}
+h1 {
+	color: black;
+	font-family: 'Playfair Display', serif;
+}
+.game {
+	border: 0.4rem solid #27263D;
+	width: 100%;
+	max-width: 70rem;
+	padding:5rem;
+	border-radius: 0.5rem;
+}
+.game h1 {
+	font-size: 3rem;
+    text-align: center;
+    letter-spacing: 0.3rem;
+}
+
+h3{
+	letter-spacing: 0.2rem;
+	font-size: 1.5rem;
+	color: black;
+	font-family: 'Playfair Display', serif;
+}
+
+.counter-block {
+    width: 20rem;
+    border-radius: 3px;
+	border: 0.3rem solid #27263D;
+	margin:2rem auto;
+	padding: 1rem;
+	display: flex;
+	justify-content: space-around;
+	font-size: 4.4rem;
+}
+.counter-block span {
+	margin:0 2.5rem;
+	color: black;
+}
+.count {
+	position: relative;
+	width: 5rem;
+	text-align: center;
+	color: #000;
+	font-family: serif;
+}
+.count::before {
+	content:"";
+	display: block;
+	padding:0.3rem 0.8rem;
+	background: #6667AB;
+	color: #fff;
+	font-size: 1.4rem;
+	position: absolute;
+	top:5rem;
+}
+.count-user::before {
+	content:"Вы";
+	left: 0.5rem;
+}
+.count-comp::before {
+	content:"Комп";
+	right: 0.3rem;
+}
+.figure-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding:3rem 2rem;
+}
+.user-field,
+.comp-field {
+	width: 50%;
+	display: flex;
+}
+.field {
+	width: 7rem;
+	height: 7rem;
+	border-radius: 50%;
+	border:0.4rem solid #fff;
+	cursor: pointer;
+	margin:0.5rem;
+	transition:.2s;
+	overflow: hidden;
+    box-shadow: 0 0 10px 0 #6667AB;
+	outline: none;
+}
+.result {
+	text-align: center;
+}
+.field.active {
+	background-color: #b0dafc;
+	box-shadow: 0 0 10px 0 #b0dafc;
+}
+.field.error {
+	background-color: #f367a5;
+	box-shadow: 0 0 10px 0 #f367a5;
+}
+.comp-field {
+	justify-content: flex-end;
+}
+.rock {
+    background: url(../IMG/stone.png) center no-repeat;
+    background-size: 4rem 4rem;
+}
+.scissors {
+    background: url(../IMG/scissors.png) center no-repeat;
+    background-size: 4rem 4rem;
+}
+.paper {
+    background: url(../IMG/toilet-paper.png) center no-repeat;
+    background-size: 4rem 4rem;
+}
+.comp-field.blink .rock {
+	animation: blink 0.3s linear infinite;
+}
+.comp-field.blink .scissors {
+	animation: blink 0.3s 0.1s linear infinite;
+}
+.comp-field.blink .paper {
+	animation: blink 0.3s 0.2s linear infinite;
+}
+.comp-field.blink {
+	animation-play-state: paused;
+}
+@keyframes blink {
+	100% {background-color: #b0dafc;}
+}
+.buttons {
+	padding:2rem 1.5rem;
+	text-align: center;
+}
+.buttons button {
+	margin:1.5rem 0;
+	cursor:pointer;
+	border:none;
+	border-radius:3rem;
+	color:#fff;
+	padding:1.5rem 2.5rem;
+	font-size: 1.6rem;
+    box-shadow: 0 0 10px 0 #6667AB;
+	transition:.2s;
+	outline: none;
+}
+.buttons button:hover,
+.buttons button:active {
+
+    box-shadow: 0 0 20px 0 #6667AB;
+}
+.play {
+	background: #6667AB;
+	font-family: serif;
+}
+
+
+@media(max-width:800px) {
+	html {
+		font-size: 8px;
+	}
+	.figure-container {
+		flex-direction: column;
+	}
+	.user-field,
+	.comp-field {
+		width: 100%;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+	}
+	.user-field {
+		margin-bottom: 2rem;
+	}
+	.user-field::before {
+		content:"Игрок";
+		display: block;
+		width: 100%;
+		color: #000;
+		font-size: 2rem;
+		text-align: center;
+		font-family: 'Playfair Display', serif;
+		font-weight: bold;
+	}
+	.comp-field::before {
+		content:"Компьютер";
+		color: #000;
+		display: block;
+		width: 100%;
+		font-size: 2rem;
+		text-align: center;
+		font-family: 'Playfair Display', serif;
+		font-weight: bold;
+	} 	
+}
+
+@media(max-width:400px) {
+	html {
+		font-size: 7px;
+	}
+}
